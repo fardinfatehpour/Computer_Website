@@ -1,18 +1,21 @@
 import { useState } from "react";
 import "./App.css";
-import { Col, Row} from "react-bootstrap";
+import { Col, Row, Container, Button } from "react-bootstrap";
+import person from './assets/person.png'
 
 const App = () => {
   return (
     <>
-      <Row>
-        <Col>
-          <h1 className="TxtWelcome">welcome</h1>
-        </Col>
-        <Col>
-          <input type="text" className="search" />
-        </Col>
-      </Row>
+      <Container>
+        <Row>
+          <Col>
+            <input type="button"><img src={person}/></input>
+          </Col>
+          <Col>
+            <input type="text" className="search" />
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 };
