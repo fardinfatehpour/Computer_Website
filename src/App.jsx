@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import { Col, Row, Container } from "react-bootstrap";
+import { Col, Row} from "react-bootstrap";
 
 const App = () => {
   return (
