@@ -1,0 +1,19 @@
+#person {
+  width: 30px;
+  height: 30px;
+}
+#sign{
+  width: 170px;
+  height: 40px;
+  border-radius: 40px;
+  margin-top: 2%;
+}
+#search{
+  width: 400px;
+  height: 40px;
+  border-radius: 40px;
+  margin-top: 2%;
+}
+#Welcome{
+  background: linear-gradient(90deg, #2e073f 0%, #ebd3f8 100%); 
+}
