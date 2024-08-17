@@ -1,19 +1,41 @@
 #person {
   width: 30px;
   height: 30px;
+  margin-left: 100px;
 }
 #sign{
+  margin-left: 100px;
   width: 170px;
   height: 40px;
-  border-radius: 40px;
-  margin-top: 2%;
+  margin-top: 3%;
+  font-family: iransans;
+}
+@font-face {
+  font-family: iransans;
+  src: url("./assets/Font/IRANSansWeb.ttf");
 }
 #search{
-  width: 400px;
+  margin-left: 150px;
+  width: 450px;
   height: 40px;
   border-radius: 40px;
-  margin-top: 2%;
+  margin-top: 1%;
+  text-align: right;
+  font-size: large;
+  font-family: iransans;
 }
 #Welcome{
+  margin-top: 1%;
+  margin-left: 100px;
   background: linear-gradient(90deg, #2e073f 0%, #ebd3f8 100%); 
+  background-clip: text;
+  color: transparent;
+}
+#MenuBars{
+  margin-left: 65%;
+  margin-top: 5%;
+}
+#Carousel{
+  width: 1000px;
+  height: 100px;
 }
