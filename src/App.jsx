@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, use } from "react";
 import "./App.css";
 import { Col, Row, Container, Button, Offcanvas, Carousel } from "react-bootstrap";
 import PersonIcon from "@mui/icons-material/Person";
 import MenuIcon from "@mui/icons-material/Menu";
 import example from "./assets/picture/example.jpg";
+import namad from './assets/picture/logo.png';
 
 const App = () => {
   // show offcenves
@@ -55,7 +56,7 @@ const App = () => {
       <Row>
         <Col className="col-5"></Col>
         <Col>
-        <Carousel activeIndex={index} onSelect={handleSelect}id="Carousel">
+        {/* <Carousel activeIndex={index} onSelect={handleSelect}id="Carousel">
       <Carousel.Item>
         <img src={example} text="First slide" />
         <Carousel.Caption>
@@ -79,9 +80,19 @@ const App = () => {
           </p>
         </Carousel.Caption>
       </Carousel.Item>
-    </Carousel>
+    </Carousel> */}
+    
 
         </Col>
+      </Row>
+      <Row>
+        <Col className="col-3"id="namad"><h3 id="font">نماد های اعتماد</h3>
+        <img src={namad} />
+        </Col>
+        <Col>
+          <h3 id="font"></h3>
+        </Col>
+
       </Row>
     </>
   );
