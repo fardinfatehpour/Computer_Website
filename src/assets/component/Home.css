@@ -1,0 +1,43 @@
+@font-face {
+  font-family: shabnam;
+  src: url(./assets/Font/shabnam.ttf);
+}
+@font-face {
+    font-family: iransans;
+    src: url(../Font/IRANSansWeb.ttf);
+}
+#Carousel {
+  width: 1000px;
+  height: 100px;
+}
+#fontIransans {
+  font-family: iransans;
+}
+#fontshabnam {
+  font-family: shabnam;
+}
+#namad {
+  margin-top: 10%;
+  margin-left: 100px;
+}
+#example {
+  width: 650px;
+}
+#Main {
+  text-align: center;
+  font-family: shabnam;
+}
+#mogod {
+  color: #7a1cac;
+}
+#ShopButton {
+  color: #2e073f;
+  font-size: x-large;
+  font-family: shabnam;
+  margin-left: 15px;
+}
+#dayBuy {
+  font-family: shabnam;
+  margin-left: 250px;
+  margin-bottom: 10px;
+}

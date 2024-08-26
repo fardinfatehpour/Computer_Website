@@ -1,0 +1,43 @@
+#person {
+  width: 30px;
+  height: 30px;
+  right: 20px;
+}
+#sign {
+  margin-left: 100px;
+  width: 170px;
+  height: 40px;
+  margin-top: 3%;
+  font-family: iransans;
+  display: flex;
+}
+#signup {
+  margin-left: 20px;
+  font-family: iransans;
+}
+#signin {
+  margin-left: 10px;
+  font-family: iransans;
+}
+@font-face {
+  font-family: iransans;
+  src: url("./assets/Font/IRANSansWeb.ttf");
+}
+#search {
+  margin-left: 150px;
+  margin-right: -10px;
+  width: 450px;
+  height: 40px;
+  border-radius: 40px;
+  margin-top: 1%;
+  text-align: right;
+  font-size: large;
+  font-family: iransans;
+}
+#Welcome {
+  margin-top: 1%;
+  margin-left: 100px;
+  background: linear-gradient(90deg, #2e073f 0%, #ebd3f8 100%);
+  background-clip: text;
+  color: transparent;
+}
