@@ -1,0 +1,32 @@
+* {
+  background-color: #1e201e;
+}
+#Welcome {
+  background: linear-gradient(90deg, #ebd3f8 0%, #ad49e1 100%);
+  background-clip: text;
+  color: transparent;
+}
+#sign{
+    color: white
+}
+#DarkLight{
+    color: white;
+}
+#Logo{
+    border-radius: 100px;
+}
+#dayBuy{
+    color: white;
+}
+#Main{
+    color: white;
+}
+#mogod{
+    color:#ebd3f8;
+}
+#ShopButton{
+    color: white;
+}
+#fontIransans{
+    color: white;
+}

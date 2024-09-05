@@ -16,16 +16,13 @@
 #fontshabnam {
   font-family: shabnam;
 }
-#namad {
-  margin-top: 10%;
-  margin-left: 100px;
-}
 #example {
   width: 650px;
 }
 #Main {
   text-align: center;
   font-family: shabnam;
+  margin-left: 6%;
 }
 #mogod {
   color: #7a1cac;
@@ -40,4 +37,9 @@
   font-family: shabnam;
   margin-left: 250px;
   margin-bottom: 10px;
+}
+#text{
+  font-family: iransans;
+  margin-top: 2%;
+  margin-left: 4%;
 }

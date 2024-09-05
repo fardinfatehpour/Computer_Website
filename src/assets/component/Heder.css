@@ -4,7 +4,6 @@
   right: 20px;
 }
 #sign {
-  margin-left: 100px;
   width: 170px;
   height: 40px;
   margin-top: 3%;
@@ -24,16 +23,22 @@
   src: url("./assets/Font/IRANSansWeb.ttf");
 }
 #search {
-  margin-left: 150px;
-  margin-right: -10px;
   width: 450px;
   height: 40px;
   border-radius: 40px;
-  margin-top: 1%;
   text-align: right;
   font-size: large;
   font-family: iransans;
+  border-style: double;
+  display: flex;
 }
+#input{
+  display: flex;
+  margin-top: 1%
+}
+/* #searchicon{
+  display: block;
+} */
 #Welcome {
   margin-top: 1%;
   margin-left: 100px;
