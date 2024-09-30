@@ -1,11 +1,12 @@
 @font-face {
   font-family: shabnam;
-  src: url(./assets/Font/shabnam.ttf);
+  src: url(../Font/shabnam.ttf);
 }
 @font-face {
-    font-family: iransans;
-    src: url(../Font/IRANSansWeb.ttf);
+  font-family: iransans;
+  src: url(../Font/IRANSansWeb.ttf);
 }
+
 #Carousel {
   width: 1000px;
   height: 100px;
@@ -38,7 +39,7 @@
   margin-left: 250px;
   margin-bottom: 10px;
 }
-#text{
+#text {
   font-family: iransans;
   margin-top: 2%;
   margin-left: 4%;

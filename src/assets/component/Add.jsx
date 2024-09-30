@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Form, Row, Col } from "react-bootstrap";
 import Swal from "sweetalert2";
-import sharp from "sharp";
-import path from 'path';
+// import sharp from "sharp";
+// import path from "path";
+import Stack from "@mui/material/Stack";
+import Rating from "@mui/material/Rating";
 
 
 const Add = () => {
@@ -49,9 +51,9 @@ const Add = () => {
         </Col>
         <Col className="col-5">
           <Form>
-            <h2>id : {uId}</h2>
+            <h2 className="FormLable">id : {uId}</h2>
             <Form.Group>
-              <Form.Label column sm="1">
+              <Form.Label column sm="1"className="FormLable">
                 Name:
               </Form.Label>
               <Form.Control
@@ -63,16 +65,30 @@ const Add = () => {
               />
             </Form.Group>
             <Form.Group controlId="formFile" className="mb-3">
-              <Form.Label>Image</Form.Label>
+              <Form.Label className="FormLable">Image</Form.Label>
               <Form.Control
                 type="file"
                 onChange={(e) => {
-                  setUImage(e.currentTarget.value);
+                  setUImage(e.currentTarget.files);
                 }}
               />
             </Form.Group>
-            <Form.Group>
+            {/* <Form.Group>
               <Form.Label column sm="1">
+                امتیاز
+              </Form.Label>
+              <Rating
+                defaultValue={0}
+                value={uScore}
+                size="large"
+                onChange={(e) => {
+                  setUScore(uScore + "⭐");
+                }}
+              />
+              
+            </Form.Group> */}
+            <Form.Group>
+            <Form.Label column sm="1"className="FormLable">
                 امتیاز
               </Form.Label>
               <Button
@@ -87,14 +103,18 @@ const Add = () => {
                 type="text"
                 placeholder="حداکثر 5 امتیاز"
                 dir="rtl"
+
                 value={uScore}
+                readOnly
+                disabled
                 onChange={(e) => {
                   setUScore(e.currentTarget.value);
                 }}
+                
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label column sm="1">
+              <Form.Label column sm="1"className="FormLable">
                 price
               </Form.Label>
               <Form.Control
@@ -107,7 +127,7 @@ const Add = () => {
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label column sm="1">
+              <Form.Label column sm="1"className="FormLable">
                 available
               </Form.Label>
               <Form.Control
@@ -134,18 +154,17 @@ const Add = () => {
                   })
                 );
                 Swal.fire({
-                  title: "Good job!",
-                  text: "You clicked the button!",
+                  title: "successful!",
+                  text: "!عملیات با موفقیت انجام شد",
                   icon: "success",
                 });
                 navigate("/");
               }}
             >
-              send
+              Send
             </Button>
           </Form>
         </Col>
-        
       </Row>
     </>
   );

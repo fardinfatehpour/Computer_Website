@@ -1,3 +1,11 @@
 body{
     background-color: white;
 }
+@font-face {
+    font-family: iransans;
+    src: url('../Font/IRANSansWeb.ttf');
+}
+.swal{
+    font-family: iransans;
+    
+}

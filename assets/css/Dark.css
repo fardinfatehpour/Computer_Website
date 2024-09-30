@@ -7,10 +7,12 @@
   color: transparent;
 }
 #sign{
-    color: white
+    color: white;
+    border-color: white;
 }
 #DarkLight{
     color: white;
+    border-color: white;
 }
 #Logo{
     border-radius: 100px;
@@ -29,4 +31,18 @@
 }
 #fontIransans{
     color: white;
+}
+.FormLable{
+    color: white;
+}
+@font-face {
+    font-family: iransans;
+    src: url('../Font/IRANSansWeb.ttf');
+}
+.swal{
+    font-family: iransans;
+    background: #000;
+}
+#search-icon{
+    background-color: #ededed;
 }
