@@ -8,9 +8,10 @@ import NightlightIcon from "@mui/icons-material/Nightlight";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 const Heder = () => {
-  const Navigte = useNavigate();
+  const navigate = useNavigate();
+  const [items, setItems] = useState();
   //dark light
   const [isDarkMode, setIsDarkMode] = useState(false);
   useEffect(() => {
@@ -27,6 +28,14 @@ const Heder = () => {
     };
   }, [isDarkMode]);
   const value = Cookies.get("fardin");
+  axios
+    .post("http://127.0.0.1:8000/all/")
+    .then((res) => setItems(res.data.data));
+  useEffect(() => {
+    axios
+      .post("http://127.0.0.1:8000/all/")
+      .then((res) => console.log(res.data.data));
+  }, []);
   return (
     <>
       <Row>
@@ -61,7 +70,7 @@ const Heder = () => {
               align="center"
               id="signin"
               onClick={() => {
-                Navigte("/signin");
+                navigate("/signin");
               }}
             >
               ورود
@@ -80,13 +89,25 @@ const Heder = () => {
         <Col>
           <div dir="rtl" id="input">
             {/* <Button variant="outline-dark"><SearchIcon id="searchicon" /></Button> */}
-            <Form.Control
+            <Form.Select
               aria-label="Example text with button addon"
-              aria-describedby="basic-addon1"   
+              aria-describedby="basic-addon1"
               placeholder="جست و جوی محصولات"
               id="search"
-            />
-            <SearchIcon id="search-icon"fontSize="large"/>
+            >
+              <option>select</option>
+              <option>
+                {items ?.map((item) => (<>
+                  <p>id:{item.id}</p>
+                  <p>id:{item.name}</p>
+                  <p>id:{item.price}</p>
+                  </>
+                ))}
+              </option>
+            </Form.Select>
+            <SearchIcon id="search-icon" fontSize="large"onClick={()=>{
+              navigate("/Search")
+            }} />
           </div>
         </Col>
         <Col>

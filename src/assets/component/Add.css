@@ -1,0 +1,24 @@
+@font-face {
+  font-family: shabnam;
+  src: url(../Font/shabnam.ttf);
+}
+#SearchData {
+  position: relative;
+  left: 76%;
+  width: 300px !important;
+  height: 62px;
+  font-size: 30px !important;
+  font-family: shabnam;
+}
+#SearchIcon {
+  cursor: pointer;
+}
+#table {
+  width: 100%;
+  border: 2px solid black;
+  text-align: center;
+  margin-top: 2%;
+  font-family: shabnam;
+  font-size: large;
+  cursor: pointer;
+}

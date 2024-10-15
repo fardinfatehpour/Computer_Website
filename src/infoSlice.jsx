@@ -6,9 +6,9 @@ const ShopSlice = createSlice({
     id: null,
     name: null,
     image: null,
-    score: null,
+    score: "",
     price: null,
-    available: null,
+    available: true,
   },
   reducers: {
     setShop: (state, action) => {
