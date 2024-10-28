@@ -6,7 +6,7 @@ import "./Heder.css";
 import SearchIcon from "@mui/icons-material/Search";
 import NightlightIcon from "@mui/icons-material/Nightlight";
 import LightModeIcon from "@mui/icons-material/LightMode";
-import Cookies from "js-cookie";
+
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const Heder = () => {
@@ -15,7 +15,6 @@ const Heder = () => {
   //dark light
   const [isDarkMode, setIsDarkMode] = useState(false);
   useEffect(() => {
-    Cookies.set("fardin", "salam", { expires: 1 });
     const LightTheme = "./assets/css/Light.css";
     const DarkTheme = "./assets/css/Dark.css";
     const Theme = isDarkMode ? DarkTheme : LightTheme;
@@ -27,15 +26,7 @@ const Heder = () => {
       document.head.removeChild(link);
     };
   }, [isDarkMode]);
-  const value = Cookies.get("fardin");
-  axios
-    .post("http://127.0.0.1:8000/all/")
-    .then((res) => setItems(res.data.data));
-  useEffect(() => {
-    axios
-      .post("http://127.0.0.1:8000/all/")
-      .then((res) => console.log(res.data.data));
-  }, []);
+  
   return (
     <>
       <Row>
@@ -46,7 +37,6 @@ const Heder = () => {
               id="DarkLight"
               onClick={() => {
                 setIsDarkMode(!isDarkMode);
-                console.log(value);
               }}
             >
               <LightModeIcon />
@@ -57,7 +47,6 @@ const Heder = () => {
               id="DarkLight"
               onClick={() => {
                 setIsDarkMode(!isDarkMode);
-                console.log(value);
               }}
             >
               <NightlightIcon />
@@ -83,28 +72,16 @@ const Heder = () => {
           </Button>
         </Col>
 
-        <Col>
-          <h1 id="Welcome">Welcome</h1>
-        </Col>
+        
         <Col>
           <div dir="rtl" id="input">
             {/* <Button variant="outline-dark"><SearchIcon id="searchicon" /></Button> */}
-            <Form.Select
-              aria-label="Example text with button addon"
-              aria-describedby="basic-addon1"
+            <Form.Control
+              type="text"
               placeholder="جست و جوی محصولات"
               id="search"
-            >
-              <option>select</option>
-              <option>
-                {items ?.map((item) => (<>
-                  <p>id:{item.id}</p>
-                  <p>id:{item.name}</p>
-                  <p>id:{item.price}</p>
-                  </>
-                ))}
-              </option>
-            </Form.Select>
+            />
+              
             <SearchIcon id="search-icon" fontSize="large"onClick={()=>{
               navigate("/Search")
             }} />

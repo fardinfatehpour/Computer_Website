@@ -1,0 +1,28 @@
+#MainExample{
+    position: relative;
+    left: 790px;
+    width: 500px;
+    height: 600px;
+    border-radius: 15px;
+}
+@font-face {
+    font-family: shabnam;
+    src: url(../Font/shabnam.ttf);
+  }
+.img{
+    width: 500px;
+    height: 600px;
+    border-radius: 15px;
+}
+.h1{
+    font-family: shabnam;
+    position: relative;
+    bottom: 550px;
+    right: 65%;
+    margin-top: 2% !important;
+}
+#price{
+    position: relative;
+    bottom: 200px;
+    font-size: xx-large;
+}

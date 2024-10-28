@@ -13,41 +13,50 @@ import SearchIcon from "@mui/icons-material/Search";
 const Add = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const id = useSelector((state) => state.Shop.id);
-  const name = useSelector((state) => state.Shop.name);
+  // Redax
   const image = useSelector((state) => state.Shop.image);
   const score = useSelector((state) => state.Shop.score);
-  const price = useSelector((state) => state.Shop.price);
   const available = useSelector((state) => state.Shop.available);
-
+  // state
+  //AddState
   const [uId, setUId] = useState();
   const [uName, setUName] = useState();
+  const [uPrice, setUPrice] = useState();
   const [uImage, setUImage] = useState();
   const [uScore, setUScore] = useState("");
-  const [uPrice, setUPrice] = useState();
   const [uAvailable, setUAvailable] = useState();
+
+  //fetch from backend
   const [items, setItems] = useState();
-  const [Usearch, setUSearch] = useState();
+
+  //Edit add Delete State
   const [Pid, setPId] = useState();
-  const [itemId, setItemId]= useState();
-  const [nameEdit, setNameEdit]= useState();
-  const [priceEdit, setPriceEdit]= useState();
+  const [itemIdEdit, setItemIdEdit] = useState();
+  const [nameEdit, setNameEdit] = useState();
+  const [priceEdit, setPriceEdit] = useState();
+  //search state
+  const [searchKey, setSearchKey] = useState("");
+  const [filtered, setFiltered] = useState([]);
   useEffect(() => {
-    setUId(id);
-    setUName(name);
     setUImage(image);
     setUScore(score);
-    setUPrice(price);
     setUAvailable(available);
-
     axios
       .post("http://127.0.0.1:8000/all/")
       .then((res) => setItems(res.data.data));
   }, []);
-  const Search = items?.filter((item) =>
-    item.name?.toLowerCase().includes(Usearch?.toLowerCase())
-  );
+
+  useEffect(() => {
+    {
+      const temp = items?.filter((items) =>
+        items.name.toLowerCase().includes(searchKey.toLowerCase())
+      );
+      setFiltered(temp);
+    }
+  }, [searchKey]);
+  if (!items) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <Button
@@ -150,12 +159,11 @@ const Add = () => {
             <Button
               variant="success"
               onClick={() => {
-                axios
-                  .post("http://127.0.0.1:8000/add/", {
-                    item_id: uId,
-                    name: uName,
-                    price: uPrice,
-                  })
+                axios.post("http://127.0.0.1:8000/add/", {
+                  item_id: uId,
+                  name: uName,
+                  price: uPrice,
+                });
                 dispatch(
                   setShop({
                     image: uImage,
@@ -198,7 +206,11 @@ const Add = () => {
                 axios.post("http://127.0.0.1:8000/delete/", {
                   id: Pid,
                 });
-                setPid('')
+                Swal.fire({
+                  title: "successful!",
+                  text: "!عملیات با موفقیت انجام شد",
+                  icon: "success",
+                });
               }}
             >
               delete
@@ -208,7 +220,7 @@ const Add = () => {
       </Row>
       <Row>
         <Col className="col-5">
-        {/* edit */}
+          {/* edit */}
           <Form>
             <Form.Group>
               <h2 align="center">Edit</h2>
@@ -229,9 +241,9 @@ const Add = () => {
               </Form.Label>
               <Form.Control
                 type="text"
-                value={itemId}
+                value={itemIdEdit}
                 onChange={(e) => {
-                  setItemId(e.currentTarget.value);
+                  setItemIdEdit(e.currentTarget.value);
                 }}
               />
             </Form.Group>
@@ -264,15 +276,13 @@ const Add = () => {
             <Button
               variant="warning"
               onClick={() => {
-                axios
-                  .post("http://127.0.0.1:8000/edit/", {
-                    id: Pid,
-                    item_id: itemId,
-                    name: nameEdit,
-                    price: priceEdit,
-                  })
-                  
-                
+                axios.post("http://127.0.0.1:8000/edit/", {
+                  id: Pid,
+                  item_id: itemIdEdit,
+                  name: nameEdit,
+                  price: priceEdit,
+                });
+
                 Swal.fire({
                   title: "successful!",
                   text: "!عملیات با موفقیت انجام شد",
@@ -285,48 +295,22 @@ const Add = () => {
             </Button>
           </Form>
         </Col>
-        {/* delete */}
-        <Col className="col-2" />
-        <Col className="col-5">
-          <Form>
-            <Form.Group>
-              <h2 align="center">Delete</h2>
-              <Form.Label column sm="1" className="FormLable">
-                id :
-              </Form.Label>
-              <Form.Control
-                type="text"
-                onChange={(e) => {
-                  setUId(e.currentTarget.value);
-                }}
-              />
-            </Form.Group>
-            <Button
-              variant="danger"
-              onClick={() => {
-                axios.post("http://127.0.0.1:8000/delete/", {
-                  id: "5",
-                });
-              }}
-            >
-              delete
-            </Button>
-          </Form>
-        </Col>
       </Row>
+      {/* search */}
       <InputGroup id="SearchData">
         <InputGroup.Text id="basic-addon1">
-          <SearchIcon id="SearchIcon" onClick={Search} />
+          <SearchIcon id="SearchIcon" />
         </InputGroup.Text>
         <Form.Control
           type="text"
           placeholder="جست و جو"
           dir="rtl"
           onChange={(e) => {
-            setUSearch(e.currentTarget.value);
+            setSearchKey(e.currentTarget.value);
           }}
         />
       </InputGroup>
+      {/* table */}
       <table id="table">
         <thead>
           <tr>
@@ -336,20 +320,24 @@ const Add = () => {
             <th>price</th>
           </tr>
         </thead>
-        {items?.map((item) => (
-          <tbody
-            onClick={() => {
-              setPId(item.id);
-            }}
-          >
-            <tr>
-              <td>{item.id}</td>
-              <td>{item.item_id}</td>
-              <td>{item.name}</td>
-              <td>{item.price}</td>
-            </tr>
-          </tbody>
-        ))}
+        {filtered.length > 0 ? (
+          filtered?.map((item, key) => (
+            <tbody
+              onClick={() => {
+                setPId(item.id);
+              }}
+            >
+              <tr key={key}>
+                <td>{item.id}</td>
+                <td>{item.item_id}</td>
+                <td>{item.name}</td>
+                <td>{item.price}</td>
+              </tr>
+            </tbody>
+          ))
+        ) : (
+          <li>No results found.</li>
+        )}
       </table>
     </>
   );

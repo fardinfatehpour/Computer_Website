@@ -14,18 +14,17 @@ import Artcle2 from "../picture/Artcle2.jpg";
 import MainExample from "../picture/mainBoard.jpg";
 //Icon
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-//Structure-Card
 
 //Main
 
 const Home = () => {
   const navigate = useNavigate();
   const { score, available } = useSelector((state) => state.Shop);
-  const [items, setItems] = useState();
+  const [items, setItems] = useState("");
   const [uAvailable, setUAvailable] = useState("");
 
   useEffect(() => {
-      axios
+    axios
       .post("http://127.0.0.1:8000/all/")
       .then((res) => setItems(res.data.data));
       if (available === true) {
@@ -36,20 +35,11 @@ const Home = () => {
         setUAvailable("");
         setUAvailable("در انبار موجود نیست");
       }
+
   }, []);
-  
-  // const AxiosPost = () => {
-  //   return new pramise((resolve, reject) => {
-  //     setTimeout(() => {
-  //       consol.log("loading :");
-  //       axios
-  //         .post("http://127.0.0.1:8000/all/")
-  //         .then((res) => setItems(res.data.data));
-  //       resolve("axios post is successful!");
-  //     }, 1000);
-  //   });
-  // };
-  // AxiosPost().than((result)=>{
+  if (!items) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <Button
@@ -174,7 +164,7 @@ const Home = () => {
       <Row>
         {items ? (
           <>
-            {items.slice(10, 14).map((item) => (
+            {items.slice(14, 22).map((item) => (
               <Col className="col-3" id="Product-Card">
                 <Card style={{ width: "17rem" }} id="Main">
                   <Card.Img variant="top" src={MainExample} />
